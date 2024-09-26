@@ -66,18 +66,15 @@ class Gnode(torch.nn.Module):
         self.ode_func.edge_index = edge_index     
 
         t = torch.linspace(0, 1, steps=2)  
-        
-        x= odeint(self.ode_func, x0, t)  
+        x= odeint(self.ode_func, x0, t)   
         
         x = x[-1]
-
         out = x #self.conv_out(x, edge_index)
         
         return out 
     
     
         
-
 
 model = Gnode(2)          
 optimizer = optim.RMSprop(model.parameters(), lr=1e-3)
@@ -93,8 +90,3 @@ for itr in range(1, 100):
             pred_y = model(data)
             loss = torch.mean(torch.abs(pred_y - true_y))
             print('Iter {:04d} | Total Loss {:.6f}'.format(itr, loss.item())) 
-
-
-
-
-               
