@@ -123,7 +123,6 @@ if __name__ == '__main__':
     func = ODEFunc().to(device)
     
     optimizer = optim.RMSprop(func.parameters(), lr=1e-3)
-    end = time.time()
 
 
     for itr in range(1, niters + 1):
@@ -144,4 +143,3 @@ if __name__ == '__main__':
                 visualize(true_y, pred_y, func, ii)
                 ii += 1
                 
-        end = time.time()
